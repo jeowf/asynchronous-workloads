@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: worker_fifo
+  task:
+    scheduling:
+      pool:
+        size: 1
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USERNAME:guest}
+    password: ${RABBIT_PASS:guest}
+
+server:
+  port: ${PORT:9090}
+
+props:
+  tenants: ${TENANTS:5}
+  strategy: ${STRATEGY:dl}

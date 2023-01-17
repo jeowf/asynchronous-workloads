@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  worker-fifo:
+    build: .
+    #container_name: worker-fifo
+    ports:
+      - "9020-9090:9090"
+    environment:
+      - JAVA_OPTS=-Xms512m -Xmx512m
+      - RABBIT_HOST=rabbitmq
+      - TENANTS=100
+      - STRATEGY=sac
+    depends_on:
+      - rabbitmq
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+
+  rabbitmq:
+    image: "rabbitmq:3.11.4-management"
+    container_name: worker-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: "/opt/rabbitmq/sbin/rabbitmqctl status"
+      interval: 2s
+      timeout: 30s
+      retries: 15
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 5000M
