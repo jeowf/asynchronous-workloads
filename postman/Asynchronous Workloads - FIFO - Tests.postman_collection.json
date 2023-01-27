@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "cd2ff818-9b3e-4a29-a0dd-7e5511fc77fb",
+		"name": "Asynchronous Workloads - FIFO - Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clean",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/clean/100",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"clean",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Setup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/setup/100",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"setup",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TEST: Varying Tenants - 500 ms",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"tenants\" : 1,\r\n        \"quantity\" : 100,\r\n        \"seed\" : 7470757,\r\n        \"minDuration\" : 500 ,\r\n        \"maxDuration\" : 501,\r\n        \"error\" : 0.0,\r\n        \"tests\" : 30,\r\n        \"testName\" : \"DL tenants = 1\"\r\n    },\r\n\r\n    {\r\n        \"tenants\" : 2,\r\n        \"quantity\" : 100,\r\n        \"seed\" : 7470757,\r\n        \"minDuration\" : 500 ,\r\n        \"maxDuration\" : 501,\r\n        \"error\" : 0.0,\r\n        \"tests\" : 30,\r\n        \"testName\" : \"DL tenants = 2\"\r\n    },\r\n\r\n    {\r\n        \"tenants\" : 5,\r\n        \"quantity\" : 100,\r\n        \"seed\" : 7470757,\r\n        \"minDuration\" : 500 ,\r\n        \"maxDuration\" : 501,\r\n        \"error\" : 0.0,\r\n        \"tests\" : 30,\r\n        \"testName\" : \"DL tenants = 5\"\r\n    },\r\n\r\n    {\r\n        \"tenants\" : 10,\r\n        \"quantity\" : 100,\r\n        \"seed\" : 7470757,\r\n        \"minDuration\" : 500 ,\r\n        \"maxDuration\" : 501,\r\n        \"error\" : 0.0,\r\n        \"tests\" : 30,\r\n        \"testName\" : \"DL tenants = 10\"\r\n    },\r\n\r\n    {\r\n        \"tenants\" : 20,\r\n        \"quantity\" : 100,\r\n        \"seed\" : 7470757,\r\n        \"minDuration\" : 500 ,\r\n        \"maxDuration\" : 501,\r\n        \"error\" : 0.0,\r\n        \"tests\" : 30,\r\n        \"testName\" : \"DL tenants = 20\"\r\n    },\r\n    \r\n    {\r\n        \"tenants\" : 50,\r\n        \"quantity\" : 100,\r\n        \"seed\" : 7470757,\r\n        \"minDuration\" : 500 ,\r\n        \"maxDuration\" : 501,\r\n        \"error\" : 0.0,\r\n        \"tests\" : 30,\r\n        \"testName\" : \"DL tenants = 50\"\r\n    },\r\n\r\n    {\r\n        \"tenants\" : 100,\r\n        \"quantity\" : 100,\r\n        \"seed\" : 7470757,\r\n        \"minDuration\" : 500 ,\r\n        \"maxDuration\" : 501,\r\n        \"error\" : 0.0,\r\n        \"tests\" : 30,\r\n        \"testName\" : \"DL tenants = 100\"\r\n    }\r\n\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/test",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TEST: With error probability",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"tenants\" : 10,\r\n        \"quantity\" : 100,\r\n        \"seed\" : 7470757,\r\n        \"minDuration\" : 500 ,\r\n        \"maxDuration\" : 501,\r\n        \"error\" : 0.1,\r\n        \"tests\" : 30,\r\n        \"testName\" : \"DL tenants = 10\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/test",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
